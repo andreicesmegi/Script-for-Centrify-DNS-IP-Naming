@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+################################################################################
+# Título    : Centrify System-Namer                                            #
+# Versão    : 1.0                                                              #
+# Data      : 15/03/2022                                                       #
+# Criador   : Andrei Cesmegi - Clover IT - Cyber Security Analyst              #
+# Tested on : Linux                                                            #
+################################################################################
+ 
+# Este é um programa de código aberto.
+# Este software não é homologado pelas empresas Delinia, Centrify ou Thycotic. TambÃ©m nÃ£o Ã© um produto revendido por Clover IT.
+# Seu uso implica em alteraÃ§Ãµes importantes dentro da plataforma Centrify. NÃ£o Ã© recomendado o uso sem autorizaÃ§Ã£o da empresa
+# dona dos sistemas alvos deste script.
+# Este programa foi criado para uso LEGAL somente. Dentro dos limites da lei, respeitando os direitos e deveres do cidadÃ£o. Todo
+# e qualquer uso ilegal Ã© de inteira responsabilidade do executor. Sugerimos o uso com Ã©tica e boas prÃ¡ticas de seguranÃ§a.
+# Tanto o programador quanto todas as empresas citadas repudiam toda e qualquer aÃ§Ã£o criminosa!
+
+YELLOW='\033[33;1m'
+RED='\033[31;1m'
+GREEN='\033[32;1m'
+BLUE='\033[34;1m'
+YELLOW='\033[33;1m'
+RED_BLINK='\033[31;5;1m'
+END='\033[m'
+
+echo ""
+echo ""
+echo ""
+echo -e "${YELLOW}################################################################################${END}"
+echo -e "${RED}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++${END}"
+echo "--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+echo -e "***                           ${BLUE}       C&A  ${END}                                   ***"
+echo "--------------------------------------------------------------------------------"
+echo -e "***                              ${GREEN} CLOVER IT  ${END}                                ***"
+echo "--------------------------------------------------------------------------------"
+echo -e "***                ${RED}         Centrify System-NameR        ${END}                    ***"
+echo "--------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------"
+echo -e "${RED}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++${END}"
+echo -e "${YELLOW}################################################################################${END}"
+echo ""
+echo ""
+
+echo -e "${RED}Insira o Tenant ID:${END}"
+echo ""
+read tenant
+echo ""
+
+echo -e "${RED}Insira o Enrollment Code:${END}"
+echo ""
+read enrollment
+echo ""
+
+echo -e "${RED}Insira o Nome do Sistema:${END}"
+echo ""
+read sname
+echo""
+echo""
+
+IP=$(hostname -i)
+
+cunenroll -d -m
+
+cenroll --force --features=all --tenant=$tenant.my.centrify.net --code=$enrollment -n $sname -a $IP
+
+echo ""
+echo -e "${GREEN}PRONTO!${END}"
+echo ""
+echo ""
+ 
+cinfo
+ 
+echo ""
+echo ""
+ 
+echo -e "${YELLOW}################################################################################${END}"
+echo ""
+echo ""
+echo " Seu novo Sistema $sname foi inserido no Portal Centrify, "
+echo " com o IP: $IP "
+echo " Certifique-se de Recarregar os Direitos no portal para visualizar corretamente."
+echo ""
+echo ""
+echo -e "${RED}++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++${END}"
+echo ""
+echo ""
+echo ""
+echo ""
